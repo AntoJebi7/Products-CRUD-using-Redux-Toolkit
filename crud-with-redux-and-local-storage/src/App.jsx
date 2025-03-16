@@ -1,10 +1,27 @@
 import React,{ useState } from 'react'
 import {useDispatch, useSelector} from "react-redux"
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
 import { addBurger } from './BurgerSlice'
 import BurgerList from "./BurgerList.jsx"
+
+
+// to prevent data from losing after refresh from local storage
+if(!localStorage.getItem("burgers")){
+  localStorage.setItem("burgers",JSON.stringify([]))
+}
+// it only accepts json data
+// so json to string
+
+// for getting item , we just call key
+// its datatype is string, so convert into json
+// so to parse
+let lcData = JSON.parse(localStorage.getItem("burgers"))
+console.log(lcData)
+
+// to remove
+//localStorage.removeItem("burgers")
+
+
 
 function App() {
   
